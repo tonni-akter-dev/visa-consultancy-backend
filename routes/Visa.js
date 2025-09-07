@@ -88,16 +88,7 @@ router.post("/", async (req, res) => {
 router.patch("/:id", async (req, res) => {
   try {
     const data = { ...req.body };
-
-    [
-      "dateOfBirth",
-      "visaGrantDate",
-      "visaExpiryDate",
-      "mustNotArriveAfter",
-      "enterBeforeDate",
-    ].forEach((field) => {
-      if (data[field]) data[field] = parseDate(data[field]);
-    });
+    parseVisaDates(data);
 
     const visa = await Visa.findByIdAndUpdate(req.params.id, data, {
       new: true,
