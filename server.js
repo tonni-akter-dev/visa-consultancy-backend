@@ -11,6 +11,13 @@ dotenv.config();
 connectDB();
 
 const app = express();
+app.use(
+  cors({
+    origin: ["http://localhost:3000/"], // replace with your deployed frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 // Middleware
 app.use(cors());
