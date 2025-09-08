@@ -87,16 +87,36 @@ router.post("/", async (req, res) => {
 // UPDATE visa
 router.patch("/:id", async (req, res) => {
   try {
-    const data = { ...req.body };
-    parseVisaDates(data);
+    const { id } = req.params;
+    let data = { ...req.body };
 
-    const visa = await Visa.findByIdAndUpdate(req.params.id, data, {
-      new: true,
-      runValidators: true,
+    [
+      "dateOfBirth",
+      "visaGrantDate",
+      "visaExpiryDate",
+      "mustNotArriveAfter",
+      "enterBeforeDate",
+    ].forEach((field) => {
+      if (data[field]) {
+        const parsed = parseFlexibleDate(data[field]);
+        if (!parsed) {
+          throw new Error(`Invalid date format for field: ${field}`);
+        }
+        data[field] = parsed;
+      }
     });
 
-    if (!visa) return res.status(404).json({ msg: "Visa not found" });
-    res.json(formatVisaDates(visa));
+    const updatedVisa = await Visa.findByIdAndUpdate(
+      id,
+      { $set: data },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedVisa) {
+      return res.status(404).json({ msg: "Visa not found" });
+    }
+
+    res.json(formatVisaDates(updatedVisa));
   } catch (err) {
     res.status(500).json({ msg: err.message });
   }

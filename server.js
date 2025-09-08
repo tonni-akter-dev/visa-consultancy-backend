@@ -5,27 +5,29 @@ import connectDB from "./config/db.js";
 
 // Routes
 import authRoutes from "./routes/auth.js";
-import taskRoutes from "./routes/Visa.js";
+import visaRoutes from "./routes/Visa.js";
 
 dotenv.config();
 connectDB();
 
 const app = express();
-app.use(
-  cors({
-    origin: ["http://localhost:3000/"], // replace with your deployed frontend URL
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
 
-// Middleware
-app.use(cors());
+// Define the CORS options
+const corsOptions = {
+  origin: ["http://localhost:3000", "http://localhost:80"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
+
+
 app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use("/api/visas", taskRoutes);
+app.use("/api/visas", visaRoutes);
 
 // Test route
 app.get("/", (req, res) => res.send("API running..."));
