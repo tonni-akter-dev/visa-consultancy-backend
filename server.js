@@ -12,7 +12,7 @@ connectDB();
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000","https://visa-consultancy-frontend.vercel.app","https://visa-admin-asjc.vercel.app"],
   credentials: true,
 };
 
