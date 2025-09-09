@@ -10,16 +10,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
-const corsOptions = {
-  origin: ["http://localhost:3000","https://visa-consultancy-frontend.vercel.app","https://visa-admin-asjc.vercel.app"],
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
-
-
-
+app.use(cors()); 
 
 app.use(express.json());
 
