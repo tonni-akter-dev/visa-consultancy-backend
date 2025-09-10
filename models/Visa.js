@@ -11,7 +11,7 @@ const visaSchema = new mongoose.Schema(
     visaGrantNumber: { type: String, required: true },
 
     visaClass: { type: String, required: true },
-    visaApplicant: { type: String, default: "Primary" },
+    visaApplicant: { type: String},
     visaGrantDate: { type: Date, required: true },
     visaExpiryDate: { type: Date, required: true },
     location: { type: String },
@@ -25,7 +25,6 @@ const visaSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Create a unique index to ensure one visa per person per visaGrantNumber
 visaSchema.index(
   { passportNumber: 1, visaGrantNumber: 1 },
   { unique: true, background: true }
