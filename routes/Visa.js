@@ -1,11 +1,7 @@
 import express from "express";
-// import auth from "../middleware/auth.js";
 import Visa from "../models/Visa.js";
-import { escapeRegex, parseFlexibleDate, sameYMD } from "../utils/dateUtils.js";
-
+import { escapeRegex, parseFlexibleDate } from "../utils/dateUtils.js";
 const router = express.Router();
-
-// Helper n to parse dates from DD-MM-YYYY or YYYY-MM-DD
 
 // Helper function to format Date objects to "DD MMM YYYY"
 function formatDateToDisplay(date) {
