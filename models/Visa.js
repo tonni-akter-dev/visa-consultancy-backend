@@ -18,7 +18,6 @@ const visaSchema = new mongoose.Schema(
     visaStatus: { type: String, default: "In Effect" },
     periodOfStay: { type: String },
     visaType: { type: String, default: "Visitor" },
-    enterBeforeDate: { type: Date },
     passportCountry: { type: String },
     applicationId: { type: String },
     transactionRef: { type: String },
