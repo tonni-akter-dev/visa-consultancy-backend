@@ -19,7 +19,6 @@ function formatVisaDates(visa) {
     visaGrantDate: formatDateToDisplay(visa.visaGrantDate),
     visaExpiryDate: formatDateToDisplay(visa.visaExpiryDate),
     mustNotArriveAfter: formatDateToDisplay(visa.mustNotArriveAfter),
-    enterBeforeDate: formatDateToDisplay(visa.enterBeforeDate),
   };
 }
 
@@ -125,7 +124,6 @@ router.post("/", async (req, res) => {
       "visaGrantDate",
       "visaExpiryDate",
       "mustNotArriveAfter",
-      "enterBeforeDate",
     ].forEach((field) => {
       if (data[field]) {
         const parsed = parseFlexibleDate(data[field]);
@@ -159,7 +157,6 @@ router.patch("/:id", async (req, res) => {
       "visaGrantDate",
       "visaExpiryDate",
       "mustNotArriveAfter",
-      "enterBeforeDate",
     ].forEach((field) => {
       if (data[field]) {
         const parsed = parseFlexibleDate(data[field]);
