@@ -9,8 +9,6 @@ const visaSchema = new mongoose.Schema(
     dateOfBirth: { type: String, required: true },
     documentNumber: { type: String, required: true },
     visaGrantNumber: { type: String, required: true },
-
-    visaClass: { type: String, required: true },
     visaApplicant: { type: String},
     visaGrantDate: { type: Date, required: true },
     visaExpiryDate: { type: Date, required: true },
