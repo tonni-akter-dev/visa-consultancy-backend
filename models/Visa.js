@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 const visaSchema = new mongoose.Schema(
   {
     familyName: { type: String, required: true },
-    givenNames: { type: String, required: true },
+    givenName: { type: String, required: true },
     visaDescription: { type: String, required: true },
-    
+
     dateOfBirth: { type: String, required: true },
     documentNumber: { type: String, required: true },
     visaGrantNumber: { type: String, required: true },

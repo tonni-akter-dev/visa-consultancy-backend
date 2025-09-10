@@ -140,7 +140,7 @@ router.post("/", async (req, res) => {
       }
     });
 
-    if (!data.familyName || !data.givenNames || !data.visaGrantDate) {
+    if (!data.familyName || !data.givenName || !data.visaGrantDate) {
       return res.status(400).json({ msg: "Required fields missing" });
     }
 
