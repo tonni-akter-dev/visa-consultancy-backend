@@ -61,8 +61,8 @@ router.post("/search", async (req, res) => {
         inputDob.getDate(),
         0,
         0,
-        0
-      )
+        0,
+      ),
     );
     const endOfDayUTC = new Date(
       Date.UTC(
@@ -72,8 +72,8 @@ router.post("/search", async (req, res) => {
         23,
         59,
         59,
-        999
-      )
+        999,
+      ),
     );
 
     // Find visa in DB
@@ -169,7 +169,7 @@ router.patch("/:id", async (req, res) => {
     const updatedVisa = await Visa.findByIdAndUpdate(
       id,
       { $set: data },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     );
     if (!updatedVisa) {
       return res.status(404).json({ msg: "Visa not found" });
