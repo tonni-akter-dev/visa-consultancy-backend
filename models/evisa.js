@@ -10,16 +10,11 @@ const EvisaSchema = new mongoose.Schema(
     passportNumber: { type: String, required: true },
 
     visaNumber: { type: String, required: true, unique: true },
-    status: {
-      type: String,
-      enum: ["Issued Visa", "Rejected", "Pending"],
-      default: "Pending",
-    },
+    status: { type: String, required: true },
     validity: { type: String },
     visaType: { type: String },
     visitPurpose: { type: String },
-
-    photo: { type: String }, // image URL
+    photo: { type: String },
   },
   { timestamps: true },
 );
